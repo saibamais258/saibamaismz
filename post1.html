@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youthvoice</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!--<script src="https://accounts.google.com/gsi/client" async></script> -->
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+                <div class="menu1">
+                    <a href=""><img id="menu2" src="./img/vibes-removebg-preview.png"></a>
+
+                    <nav class="menu" id="navMenu">
+                        <ul>
+                            <li class="menu-button" data-window="firstWindow"><a href="./index.html">Menu</a></li>
+                            <li class="menu-button" data-window="secondWindow"><a href="#">Produtos</a></li>
+                            <li class="menu-button" data-window="thirdWindow"><a href="#">Curiosidades</a></li>
+                            <li class="menu-button" data-window="fourthWindow"><a href="#">Lugares</a></li> 
+                            <li class="menu-button" data-window="fifthWindow"><a href="#">Sobre</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="btn-contato">
+                        <div class="search-bt" id="searchbt">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                        <div class="contato" id="contato">
+                            <a href="#"><button>CONTATO</button></a>
+                        </div>
+                        <div class="contato0" id="contato">
+                            <a href="#"><button><i class="fa-solid fa-phone"></i></button></a>
+                        </div>
+
+                        <div class="account" id="account">
+                            <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        </div>
+
+                    </div>
+                </div><!--menu1-->
+
+            </div><!--flex-->
+            <div>
+                <!--<div class="search-box" id="elementToStay">
+                    <input type="text" class="search-txt" placeholder="Search for what you want..." onkeyup="search()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>-->
+
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onfocus="expandSearch()" onblur="shrinkSearch()" oninput="searchContent()"> 
+                    <button class="search-button" onclick="executeSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="search-results" id="search-results"></div> <!-- Contêiner para resultados de pesquisa -->
+                </div>
+
+                <div id="search-window" class="oculto">
+                    <input type="text" id="search-bar1" placeholder="Pesquisar...">
+                    <button class="bt2" id="search-button" onclick="search()">Pesquisar</button>
+                    <button class="bt0" id="close-window"><i class="fas fa-xmark"></i></button>
+                    <div id="results"></div>
+                </div>
+
+                <!--<div class="search-box" id="elementToStay"> 
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onkeyup="search()"> 
+                    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                </div>-->
+            </div>
+        </div><!--container-->
+
+    </header>
+
+    <div class="hamburger">
+        <span id="icon" class="icon-container">
+            <i id="toggle-icon" class="fa-solid fa-bars icon"></i>
+        </span>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="button1" id="firstWindowButton" href="#"><i class="fas fa-calendar-alt"></i>Produtos</a>
+        <a class="button1" id="secondWindowButton" href="#"><i class="fas fa-highlighter"></i>Novidades</a>
+        <a class="button1" id="thirdWindowButton" href="#"><i class="fas fa-microphone"></i>Curiosidades</a>
+        <a class="button1" id="fourthWindowButton" href="#"><i class="fas fa-newspaper"></i>Lugares</a>
+        <a class="button1" id="fifthWindowButton" href="./index.html"><i class="fas fa-book"></i>Menu</a>
+        <a class="button1" id="openCommentsButton" href="#"><i class="fa-solid fa-comments"></i>Sobre</a>
+        <!-- Outras opções -->
+    </div>
+    
+    <script>
+        document.addEventListener("scroll", function() {
+            var header = document.getElementById("header");
+            var navMenu = document.getElementById("navMenu");
+            var logo = document.getElementById("menu2");
+            var elementsToHide = document.querySelectorAll(".menu");
+            var account = document.querySelector(".account");
+            var searchBox = document.getElementById("elementToStay");
+
+            if (window.scrollY > 50) {
+                elementsToHide.forEach(function(element) {
+                    element.classList.add("hidden");
+                });
+                header.classList.add("shrink");
+                logo.classList.add("shrink");
+                account.classList.add("shrink");
+                searchBox.classList.add("shrink");
+            } else {
+                elementsToHide.forEach(function(element) {
+                    element.classList.remove("hidden");
+                });
+                header.classList.remove("shrink");
+                logo.classList.remove("shrink");
+                account.classList.remove("shrink");
+                searchBox.classList.remove("shrink");
+            }
+        }); //
+
+
+      </script>
+
+<!--<div id="loginModal" class="modal"> 
+    <div class="modal-content"> 
+        <span class="close">&times;</span> 
+        <h2>Login</h2> 
+        <form> 
+           <label for="username">Usuário:</label> 
+            <input type="text" id="username" placeholder="Email ou telefone" name="username"> 
+            <br> 
+            <label for="password">Senha:</label> 
+            <input type="password" id="password" placeholder="Senha" name="password"> 
+            <br> 
+            <button type="submit" id="loginBtn">Login</button> 
+            <li><a href="#">Esqueceu senha?</a></li>
+            <p>_______________ou______________</p>
+            <a href="/auth/google" id="google-login" style="display: inline-block; padding: 10px; background: #4285F4; color: white; text-decoration: none; border-radius: 5px;">Entrar com Google</a>
+        </form> 
+    </div>
+</div> -->
+
+<div class="overlay-contato" id="overlay-contato">
+    <div class="contact-window">
+        <button class="close1">&times;</button>
+        <h2>Contate o Proprietário</h2>
+        <div class="contact-links">
+        <a href="https://wa.me/SeuNumero" target="_blank" class="whatsapp">WhatsApp</a>
+        <a href="mailto:seuemail@exemplo.com" class="email">Email</a>
+        <a href="https://t.me/SeuUsuario" target="_blank" class="telegram">Telegram</a>
+        <a href="https://www.instagram.com/SeuUsuario" target="_blank" class="instagram">Instagram</a>
+        </div>
+    </div>
+</div>
+
+    <div id="firstWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="firstWindow" class="post" data-theme="Tema 2" data-url="detalhes-tema2.html"></div>
+    </div> 
+    <div id="secondWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="secondWindow" class="post" data-theme="Tema 3" data-url="detalhes-tema3.html">
+            <h1>Hello World</h1>
+            <p>Eu estou bem graças a Deus</p>
+        </div> 
+    </div> 
+    <div id="thirdWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="thirdWindow" class="post" data-theme="Tema 4" data-url="detalhes-tema4.html">
+            <h1>Olá Mundo</h1>
+            <p>Irei a escola em breve</p>
+        </div> 
+    </div> 
+    <div id="fourthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fourthWindow" class="post" data-theme="Tema 5" data-url="detalhes-tema5.html"></div> 
+    </div> 
+    <div id="fifthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fifthWindow" class="post" data-theme="Tema 6" data-url="detalhes-tema6.html"></div> 
+    </div>
+
+    <div class="content"> 
+
+        <div id="index" class="post" data-theme="Tema 1" data-url="detalhes-tema1.html">
+            <div class="part1">
+                <h3 class="tema">O que significa “Significado”?</h3><!--/blog_post_header--><!--blog_post_metadata-->
+                <div class="part1-1">
+                  <div>
+                    <p>Ah, essa é uma pergunta que nos leva para as profundezas do pensamento
+                      filosófico! A palavra "significado" carrega camadas de interpretação e
+                        aplicação que vão desde a linguagem até a filosofia e a ciência. Vamos explorá-la:
+                    </p>
+                    <h4>Qual seria o seu real sentido?</h4>
+                    <p>Agora que já sabemos da sua origem, podemos bem saber como definir essa palavra:
+                      O "significado" refere-se àquilo que algo representa ou ao propósito e importância
+                      de algo dentro de um determinado contexto. Ele pode ser tão simples quanto a definição
+                        de uma palavra, ou tão complexo quanto o propósito da vida.
+                      
+                      O "significado" de algo no dia a dia pode se referir ao seu sentido ou interpretação
+                      em diferentes contextos. Aqui estão alguns exemplos:</p>
+                      
+                      <p>1. <strong>Palavras e frases:</strong> Por exemplo, a palavra "amizade" significa uma relação de afeto
+                      e confiança entre pessoas.</p>
+                      <p>2. <strong>Símbolos:</strong> Um certo “✔” simboliza a aprovação, enquanto um sinal de "stop" indica 
+                      que devemos parar.</p>
+                      <p>3. <strong>Gestos:</strong> Um aceno de cabeça geralmente significa "sim", e um gesto de mão aberta pode 
+                      indicar saudação ou despedida.</p>
+                  </div>
+                  <div class="imag1">
+                  <img src="./Img/“Significado” (1).png" alt="significado">
+  
+                  </div>
+                </div>
+              </div>
+              <div class="part2">
+                <h4>Dimensão Filosófica</h4>
+                <div class="part2-1">
+                  <div>
+                    <p>Na filosofia, o conceito de "significado" é multifacetado e pode ser explorado de diferentes maneiras. </p>
+                        <p>Ele está frequentemente relacionado à busca pelo sentido da existência humana, da moralidade, do 
+                        conhecimento e do mundo em que vivemos.</p>
+                    <p>Nesse contexto, ele transcende a linguagem e entra na busca por propósito e 
+                      entendimento. Filósofos como <em>Wittgenstein</em> analisaram como a linguagem e o significado 
+                      influenciam a forma como vemos o mundo.
+                    </p>
+                    <p>Por exemplo, no existencialismo, o significado é visto como algo que cada indivíduo deve criar e descobrir 
+                        por si mesmo, enfatizando a liberdade e a responsabilidade pessoal. Já no idealismo, o significado está 
+                        ligado à mente e às ideias, considerando o mundo material como uma manifestação da consciência.</p>
+                  </div>
+                  <div>
+                  <img src="./Img/pexels-anne-o-sullivan-1478092867-26887007.jpg" alt="filosofo">
+                  </div>
+                </div>
+                <div class="part3">
+                  <h4>Aplicações em Ciências</h4>
+                  <p>Essa palavra, o “significado” pode ser também aplicada na ciência. Em <a href="#">semiótica</a>, por 
+                    exemplo, o significado é estudado em relação aos signos (palavras, imagens, gestos) e 
+                    como eles representam algo para quem os interpreta, ou também na psicologia, o significado 
+                    pode se relacionar com como as pessoas encontram propósito em suas vidas.</p>
+                  <img class="semiotica" src="./Img/phpn6mnho.png" alt="">
+                  <h4>No Contexto Cultural</h4>
+                  <p>Bem como se sabe, o significado de algo pode mudar dependendo da cultura de cada região, a 
+                    época e o indivíduo. Por exemplo, cores têm significados diferentes em várias culturas: o 
+                    branco, que simboliza pureza em alguns lugares, pode significar luto em outros.
+  
+  
+                    Esses "significados" ajudam na comunicação e na compreensão mútua. Essa palavra reflete a 
+                    complexidade da nossa comunicação e a forma como atribuímos valor e propósito ao que nos rodeia.</p>
+  
+                    <img alt="" class="imag2" src="./Img/pexels-anurag-sharma-706083-272825.jpg"><!--/blog_post_image--><!--blog_post_header-->
+                </div>  
+              <div class="u-blog-control u-metadata u-metadata-1"><!--blog_post_metadata_date--><span class="u-meta-date u-meta-icon">13 de abr. de 2025 </span><!--/blog_post_metadata_date--><!--blog_post_metadata_category--><span class="u-meta-category u-meta-icon"><a href="../blog/blog.html#/blog-1///1"> Página Inicial </a></span><!--/blog_post_metadata_category--><!--blog_post_metadata_comments--><span class="u-meta-comments u-meta-icon"><!--blog_post_metadata_comments_content--><!--/blog_post_metadata_comments_content--></span><!--/blog_post_metadata_comments-->
+              </div><!--/blog_post_metadata--><!--blog_post_content-->
+              <div class="u-align-justify u-blog-control u-post-content u-text u-text-2 fr-view">
+                <p>Visite as nossas redes sociais a baixo.</p>
+            </div><!--/blog_post_content-->
+        </div>
+        <div id="comment-section" style="display: none;">
+            <h3>Comentários</h3>
+            <div id="comments"></div>
+            <textarea id="commentText" placeholder="Escreva um comentário..."></textarea>
+            <button id="submitComment">Enviar Comentário</button>
+        </div>
+    </div>
+
+    
+
+    <footer> 
+        <div class="footer-top">
+            <div class="logo">
+                <img src="./img/vibes-removebg-preview.png" alt="Logo" width="140" height="95"> <!-- Altere o caminho da imagem e os tamanhos conforme necessário -->
+            </div> 
+            <div class="footer-section"> 
+                <h4>Outras redes</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Novidades</h4> 
+                <ul> 
+                    <li><a href="#">Notícias</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Contatos</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i>Whatsapp</a></li> 
+                    <li><a id="linkedin-link" href="mailto:email@empresa.com" target="_blank"><i class="fa-solid fa-envelope"></i>E-mail</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Companhia</h4> 
+                <ul> 
+                    <li>Ano de criação: 2025</li> 
+                    <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                    <li>Criador: Nome do Criador</li> 
+                </ul> 
+            </div> 
+        </div> 
+        <div class="footer-bottom"> 
+            <a href="./politic.html"><i class="fas fa-lock"></i>Políticas de privacidade</a> 
+            <a href="#"><i class="fas fa-at"></i>Suporte</a> 
+            <a href="#"><i class="fas fa-file-alt"></i>Termos e condições</a> 
+            <a href="#"><i class="fa-solid fa-phone"></i>Contacte-nos</a> 
+        </div> 
+    </footer> 
+    <div id="window1" class="window"> 
+        Conteúdo da Página 1 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section">
+                     <h4>Outras redes</h4> 
+                     <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Instagram</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div> 
+        </footer> 
+    </div> 
+    <div id="window2" class="window"> 
+        Conteúdo da Página 2 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section"> 
+                    <h4>Outras redes</h4> 
+                    <ul> 
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> 
+                <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div>
+        <footer-credits>
+        <p>&copy; 2025 Youthvoice. All rights reserved.</p> 
+        </footer>
+    </footer>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
