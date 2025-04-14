@@ -163,9 +163,9 @@ document.getElementById('fifthWindowButton').addEventListener('click', () => ope
 
   //ACCOUNT //
 
- document.getElementById("account").onclick = function() {
+/* document.getElementById("account").onclick = function() {
     document.getElementById("loginModal").style.display = "block";
-};
+}; */
 
 document.getElementsByClassName("close")[0].onclick = function() {
     document.getElementById("loginModal").style.display = "none";
@@ -177,15 +177,15 @@ document.getElementById("loginBtn").onclick = function() {
 
 // Remove the click event on the window to prevent closing the modal by clicking outside
 
-document.querySelector('.account').addEventListener('click', function() {
+/* document.querySelector('.account').addEventListener('click', function() {
   // Desativa o scroll na tela principal
   document.body.style.overflow = 'hidden';
-});
+}); 
 
 document.querySelector('#loginBtn').addEventListener('click', function() {
   // Ativa o scroll na tela principal
   document.body.style.overflow = '';
-});
+}); */
 
 document.querySelector('.close').addEventListener('click', function() {
   // Ativa o scroll na tela principal
@@ -652,4 +652,3 @@ document.addEventListener('DOMContentLoaded', () => {
           });
       });
 });
-
