@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba Mais Mz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <!-- <script src="https://accounts.google.com/gsi/client" async></script> -->
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+                <div class="menu1">
+                    <a href=""><img id="menu2" src="./img/vibes-removebg-preview.png"></a>
+
+                    <nav class="menu" id="navMenu">
+                        <ul>
+                            <li class="menu-button" data-window="firstWindow"><a href="./index.html">Menu</a></li>
+                            <li class="menu-button" data-window="secondWindow"><a href="#">Produtos</a></li>
+                            <li class="menu-button" data-window="thirdWindow"><a href="#">Curiosidades</a></li>
+                            <li class="menu-button" data-window="fourthWindow"><a href="#">Lugares</a></li> 
+                            <li class="menu-button" data-window="fifthWindow"><a href="#">Sobre</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="btn-contato">
+                        <div class="search-bt" id="searchbt">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                        <div class="contato" id="contato">
+                            <a href="#"><button>CONTATO</button></a>
+                        </div>
+                        <div class="contato0" id="contato">
+                            <a href="#"><button><i class="fa-solid fa-phone"></i></button></a>
+                        </div>
+
+                        <div class="account" id="account">
+                            <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        </div>
+
+                    </div>
+                </div><!--menu1-->
+
+            </div><!--flex-->
+            <div>
+                <!--<div class="search-box" id="elementToStay">
+                    <input type="text" class="search-txt" placeholder="Search for what you want..." onkeyup="search()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>-->
+
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onfocus="expandSearch()" onblur="shrinkSearch()" oninput="searchContent()"> 
+                    <button class="search-button" onclick="executeSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="search-results" id="search-results"></div> <!-- Contêiner para resultados de pesquisa -->
+                </div>
+
+                <div id="search-window" class="oculto">
+                    <input type="text" id="search-bar1" placeholder="Pesquisar...">
+                    <button class="bt2" id="search-button" onclick="search()">Pesquisar</button>
+                    <button class="bt0" id="close-window"><i class="fas fa-xmark"></i></button>
+                    <div id="results"></div>
+                </div>
+
+                <!--<div class="search-box" id="elementToStay"> 
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onkeyup="search()"> 
+                    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                </div>-->
+            </div>
+        </div><!--container-->
+
+    </header>
+
+    <div class="hamburger">
+        <span id="icon" class="icon-container">
+            <i id="toggle-icon" class="fa-solid fa-bars icon"></i>
+        </span>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="button1" id="firstWindowButton" href="#"><i class="fas fa-calendar-alt"></i>Produtos</a>
+        <a class="button1" id="secondWindowButton" href="#"><i class="fas fa-highlighter"></i>Novidades</a>
+        <a class="button1" id="thirdWindowButton" href="#"><i class="fas fa-microphone"></i>Curiosidades</a>
+        <a class="button1" id="fourthWindowButton" href="#"><i class="fas fa-newspaper"></i>Lugares</a>
+        <a class="button1" id="fifthWindowButton" href="./index.html"><i class="fas fa-book"></i>Menu</a>
+        <a class="button1" id="openCommentsButton" href="#"><i class="fa-solid fa-comments"></i>Sobre</a>
+        <!-- Outras opções -->
+    </div>
+    
+    <script>
+        document.addEventListener("scroll", function() {
+            var header = document.getElementById("header");
+            var navMenu = document.getElementById("navMenu");
+            var logo = document.getElementById("menu2");
+            var elementsToHide = document.querySelectorAll(".menu");
+            var account = document.querySelector(".account");
+            var searchBox = document.getElementById("elementToStay");
+
+            if (window.scrollY > 50) {
+                elementsToHide.forEach(function(element) {
+                    element.classList.add("hidden");
+                });
+                header.classList.add("shrink");
+                logo.classList.add("shrink");
+                account.classList.add("shrink");
+                searchBox.classList.add("shrink");
+            } else {
+                elementsToHide.forEach(function(element) {
+                    element.classList.remove("hidden");
+                });
+                header.classList.remove("shrink");
+                logo.classList.remove("shrink");
+                account.classList.remove("shrink");
+                searchBox.classList.remove("shrink");
+            }
+        }); //
+
+
+      </script>
+
+<div id="loginModal" class="modal"> 
+    <div class="modal-content"> 
+        <span class="close">&times;</span> 
+        <h2>Login</h2> 
+        <form> 
+           <!--<label for="username">Usuário:</label> -->
+            <input type="text" id="username" placeholder="Email ou telefone" name="username"> 
+            <br> 
+           <!-- <label for="password">Senha:</label> -->
+            <input type="password" id="password" placeholder="Senha" name="password"> 
+            <br> 
+            <button type="submit" id="loginBtn">Login</button> 
+            <li><a href="#">Esqueceu senha?</a></li>
+            <p>_______________ou______________</p>
+            <a href="/auth/google" id="google-login" style="display: inline-block; padding: 10px; background: #4285F4; color: white; text-decoration: none; border-radius: 5px;">Entrar com Google</a>
+        </form> 
+    </div>
+</div>
+
+<div class="overlay-contato" id="overlay-contato">
+    <div class="contact-window">
+        <button class="close1">&times;</button>
+        <h2>Contate o Proprietário</h2>
+        <div class="contact-links">
+        <a href="https://wa.me/SeuNumero" target="_blank" class="whatsapp">WhatsApp</a>
+        <a href="mailto:seuemail@exemplo.com" class="email">Email</a>
+        <a href="https://t.me/SeuUsuario" target="_blank" class="telegram">Telegram</a>
+        <a href="https://www.instagram.com/SeuUsuario" target="_blank" class="instagram">Instagram</a>
+        </div>
+    </div>
+</div>
+
+    <div id="firstWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="firstWindow" class="post" data-theme="Tema 2" data-url="detalhes-tema2.html"></div>
+    </div> 
+    <div id="secondWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="secondWindow" class="post" data-theme="Tema 3" data-url="detalhes-tema3.html">
+            <h1>Hello World</h1>
+            <p>Eu estou bem graças a Deus</p>
+        </div> 
+    </div> 
+    <div id="thirdWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="thirdWindow" class="post" data-theme="Tema 4" data-url="detalhes-tema4.html">
+            <h1>Olá Mundo</h1>
+            <p>Irei a escola em breve</p>
+        </div> 
+    </div> 
+    <div id="fourthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fourthWindow" class="post" data-theme="Tema 5" data-url="detalhes-tema5.html"></div> 
+    </div> 
+    <div id="fifthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fifthWindow" class="post" data-theme="Tema 6" data-url="detalhes-tema6.html"></div> 
+    </div>
+
+    <div class="content"> 
+
+        <div id="index" class="post" data-theme="Tema 1" data-url="detalhes-tema1.html">
+            <div class="part1">
+                <h2 class="tema">Tudo sobre Teclados</h2><!--/blog_post_header--><!--blog_post_metadata-->
+                <div class="part1-1">
+                    <div>
+                        <h4 class="tipos2">História e evolução do Teclado</h4>
+                        <p>A evolução dos teclados começou no século XIX, com Christopher Latham Sholes, que patenteou a primeira máquina 
+                            de escrever comercialmente bem-sucedida em 1868 e introduziu o teclado QWERTY para maior eficiência na digitação. 
+                            No entanto, a história remonta ao século XVIII, com a criação da primeira máquina de escrever por Henry Mill em 1714 
+                            e a introdução de um sistema de teclado por Pelegrinno Turri em 1808.
+
+                            Ao longo dos anos, diversas melhorias foram feitas, como o protótipo de William Austin Burt em 1829 e o modelo avançado 
+                            de Carlos Thuber em 1843. Posteriormente, em 1881, surgiram os cartões perfurados, facilitando o armazenamento e leitura 
+                            de mensagens. O código Morse foi substituído por impressoras mecânicas, marcando avanços na comunicação.
+                            
+                            No século XX, os teclados permaneciam associados às máquinas de escrever, e a máquina de teletipo foi desenvolvida para 
+                            tornar a comunicação mais acessível, evoluindo para incluir o layout QWERTY e novas funcionalidades. Por volta de 1930, 
+                            a união das máquinas de escrever e teletipo trouxe novos dispositivos utilizados em vários setores.
+                            
+                            O layout QWERTY teve um papel fundamental na transição para os computadores, sendo adotado nos primeiros modelos por volta 
+                            dos anos 1940. Com o tempo, surgiram teclados mecânicos, de membrana e, mais recentemente, virtuais em dispositivos móveis. 
+                            Tecnologias como inteligência artificial e reconhecimento de voz continuam a moldar o futuro dos teclados.</p>
+                    </div> 
+                    <div class="imag1">
+                        <img src="./img1/OIP.jpg" alt="Christopher">
+                    </div>
+                </div>
+                <h4 class="tipos1">Tipos, tecnologias e suas características</h4>
+                        <p>Os tipos de teclado Servem para adaptá-los às diferentes necessidades do usuário. Os teclados podem ser classificados de 
+                            várias maneiras, dependendo de sua conexão, mecanismo, design e uso.
+
+                            Com o avanço da tecnologia, os teclados evoluíram bastante desde a sua criação. Isso proporciona a melhora de suas funcionalidades, 
+                            bem como sua usabilidade. Hoje existem muitos tipos de teclado adaptados ao computador e soluções tecnológicas.
+                            Aqui iremos destacar esses tipos de teclados e suas características:</p>
+                    </div>
+                <div class="part1-2">
+                        <h4>Teclado mecânico</h4>
+                        <img class="teclado" src="./img1/baixados (1).jpg" alt="">
+                        <p>Os teclados mecânicos são conhecidos por sua durabilidade e sensação tátil ao digitar. Ele funciona utilizando interruptores individuais 
+                            para cada tecla, ao invés de uma membrana de borracha como nos teclados convencionais. Esses interruptores mecânicos são compostos por 
+                            três componentes principais:</p>
+                        <p>1. <strong>Keycap (Tampa da Tecla):</strong> É a parte visível e onde você pressiona.</p>
+                        <p>2. <strong>Switch (Interruptor):</strong> Fica abaixo do keycap e é responsável pela sensação tátil e pelo som. Ele contém uma mola que 
+                            retorna a tecla à posição inicial após pressioná-la.</p>
+                        <p>3. <strong>Placa de Circuito:</strong>  Registra o sinal elétrico quando o interruptor é ativado e envia o comando para o computador.</p>
+                        <p>O que torna os teclados mecânicos especiais é a diversidade de switches disponíveis, como os do tipo linear, tátil ou clique, oferecendo 
+                            diferentes sensações de digitação ou jogo. Muitos preferem esses teclados por sua durabilidade, resposta rápida e feedback mais satisfatório. 
+                            Além disso, eles costumam ser mais personalizáveis.</p>
+                            <br>
+                </div>
+                
+            
+              
+                <div class="part2">
+                    <h4>Teclado ergonômico</h4>
+                    <div class="part2-1">
+                        
+                    
+                        <div>
+                            <p>Esses teclados são projetados para reduzir a tensão nos músculos e articulações das mãos e pulsos, o que pode ajudar a prevenir lesões por 
+                                esforço repetitivo. Eles geralmente têm um design dividido ou curvado, permitindo que as mãos e os pulsos fiquem em uma posição mais natural.</p>
+                                <p>Ele se diferencia dos teclados comuns por suas características, sendo elas:</p>
+                            <p>1. <strong>Divisão do teclado:</strong> Muitos teclados ergonômicos são divididos ao meio, permitindo que cada mão opere em ângulos mais confortáveis, alinhados 
+                                com o posicionamento natural dos ombros.
+                            </p>
+                            <p>2. <strong>Curvatura:</strong> Alguns têm um design curvado ou inclinado, que minimiza a necessidade de dobrar os pulsos.</p>
+                            <p>3. <strong>Apoio para os pulsos:</strong> Vem com áreas acolchoadas onde os pulsos podem descansar, reduzindo a pressão</p>
+                            <p>4. <strong>Disposição das teclas:</strong> As teclas podem ser reposicionadas ou inclinadas para minimizar movimentos desnecessários.</p>
+                        </div>
+                        <div>
+                            <img class="semiotica" src="./img1/baixados (2).jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="part2-2">
+                        <h4>Teclado de membrana</h4>
+                        <img class="semiotica" src="./img1/download.jpg" alt="">
+                        <p>Aqui na nossa lista também encontraremos o teclado membrana, como sendo um que se destaca entre os outros, já que é graças à sua criação 
+                            que se tornou possível acoplar o teclado aos nossos laptops, devido ao seu design compacto e silencioso. Não só isso, teclados de membrana 
+                            têm muitas variedades em um nível técnico, por exemplo, é muito fácil para esses teclados ter uma certa resistência a fluidos, algo que em 
+                            um ambiente profissional se torna uma grande vantagem. Seus principais componentes incluem:</p>
+                        <p>1. <strong>Camadas de membrana:</strong> São folhas flexíveis com circuitos impressos, que registram os toques quando pressionadas.</p>
+                        <p>2. <strong>Cúpulas de borracha ou silicone:</strong> Proporcionam a sensação de pressão e ajudam no retorno das teclas à posição original.</p>
+                        <p>3. <strong>Placa de circuito:</strong> Conecta as camadas de membrana ao sistema eletrônico, transmitindo os comandos ao computador.</p>
+                        <p>4. <strong>Cobertura plástica com teclas:</strong> Protege os componentes internos e fornece a interface de digitação.</p>
+                        <p>Por serem mais simples e econômicos, os teclados de membrana costumam ser utilizados em notebooks, controles remotos e teclados de escritório.</p><br>
+                    </div>
+                    <div class="part2-3">
+                        <h4>Teclados para jogos</h4>
+                        <img class="semiotica" src="./img1/baixados (3).jpg" alt="teclado para jogos">
+                        <p>Os teclados gamers são teclados mecânicos com algumas luzes LED RGB de todos os tipos. Eles são projetados para oferecer desempenho e durabilidade 
+                            superiores, atendendo às exigências dos jogadores. Algumas das características que os diferenciam dos teclados comuns:</p>
+                        <p>1. <strong>Switches mecânicos:</strong> Ao contrário dos teclados de membrana, os teclados gamers geralmente usam switches mecânicos, que proporcionam 
+                            maior precisão, resposta rápida e uma sensação tátil distinta.</p>
+                        <p>2. <strong>Iluminação RGB personalizável:</strong> Muitos modelos oferecem luzes LED RGB, permitindo que os jogadores customizem cores e efeitos para melhor estética ou 
+                            funcionalidade.</p>
+                        <p>3. <strong>Teclas programáveis e macros:</strong> Permitem que os jogadores atribuam comandos específicos a determinadas teclas, facilitando a jogabilidade em títulos 
+                            competitivos.</p>
+                        <p>4. <strong>Anti-ghosting e N-Key Rollover:</strong> Impedem que o teclado falhe ao detectar múltiplas teclas pressionadas simultaneamente, essencial para jogos que exigem 
+                            comandos rápidos e complexos.</p>
+                        <p>Cada tipo de teclados tem suas vantagens dependendo do uso.</p><br>
+
+                        <h4 class="tipos1">Layout de teclado.</h4>
+                        <img class="semiotica" src="./img1/OIP (2).jpg" alt="">
+                        <p>Os layouts de teclado variam conforme o idioma, região e preferências de uso. Aqui estão alguns dos principais:</p>
+                        <p><strong>QWERTY:</strong> O layout mais comum, usado em muitos países. Foi projetado para máquinas de escrever e permanece popular.</p>
+                        <p><strong>AZERTY:</strong> Utilizado principalmente na França e em países francófonos. As teclas são organizadas de forma diferente do QWERTY.</p>
+                        <p><strong>DVORAK:</strong> Um layout alternativo projetado para aumentar a eficiência e reduzir o esforço durante a digitação.</p>
+                        <p><strong>ABNT e ABNT2:</strong> Padrões brasileiros que incluem teclas específicas para o idioma português, como o "ç" e acentos.</p>
+                        <p><strong>ANSI e ISO:</strong> Padrões internacionais que diferem no tamanho e posição de algumas teclas, como Enter e Shift.</p><br>
+
+                        <h4 class="tipos1">Atalhos do computador</h4>
+                        <p>O teclado, como um dos periféricos de entrada tem também muitos atalhos que facilitam a execução de alguns comandos ou programas do computador. 
+                            Aqui tenho alguns deles que podem ajudar na eficiência para utilização do seu computador:</p>
+                        <p>1. <strong>Ctrl + C:</strong> Copiar o texto ou item selecionado.</p>
+                        <p>2. <strong>Ctrl + V:</strong> Colar o texto ou item copiado.</p>
+                        <p>3. <strong>Ctrl + X:</strong> Recortar o texto ou item selecionado.</p>
+                        <p>4. <strong>Ctrl + Z:</strong> Desfazer a última ação.</p>
+                        <p>5. <strong>Ctrl + Y:</strong> Refazer a última ação desfeita.</p>
+                        <p>6. <strong>Alt + Tab:</strong> Alternar entre janelas abertas.</p>
+                        <p>7. <strong>Ctrl + S:</strong> Salvar o documento ou arquivo atual.</p>
+                        <p>8. <strong>Alt + F4:</strong> Fechar o programa ou janela ativa.</p>
+                        <p>9. <strong>Windows + D:</strong> Mostrar ou ocultar o desktop.</p>
+                        <p>10. <strong>Windows + L:</strong> Bloquear o computador.</p>
+
+
+                        <p>Esses atalhos podem ajudar a aumentar sua produtividade e facilitar o uso do computador.</p>
+
+                    </div>
+                    
+                
+                    <div class="part3">
+                        <h4 class="tipos1">Personalização do teclado</h4>
+                        <p>Para personalizar o seu teclado, você pode alterar configurações, layout, idioma ou até mesmo 
+                            usar softwares de terceiros. Aqui estão algumas maneiras de personalizar:</p>
+                        <p>1. Alterar o layout do teclado:  
+                            <p>- No Windows, vá para Configurações → Hora e idioma → Idioma.</p>
+                            <p>Adicione ou selecione o idioma desejado e ajuste o layout do teclado.</p>
+                        <p>2. Criar atalhos personalizados: </p> 
+                            <p>- Use ferramentas como AutoHotkey para definir macros e atalhos que tornam o teclado mais 
+                            eficiente para suas necessidades</p>
+                        <p>3. Teclados físicos customizados: </p> 
+                            <p>- Você pode substituir teclas ou adquirir um teclado mecânico que permita personalização das 
+                            keycaps (capas das teclas) e da iluminação.</p>
+                            <p>4. Aplicativos de teclado virtual: </p>
+                                <p>- Existem apps e softwares que permitem criar layouts específicos ou adicionar funções extras ao teclado.</p><br>
+                    </div>
+
+                    <div class="u-blog-control u-metadata u-metadata-1"><!--blog_post_metadata_date--><span class="u-meta-date u-meta-icon">13 de abr. de 2025 </span><!--/blog_post_metadata_date--><!--blog_post_metadata_category--><span class="u-meta-category u-meta-icon"><a href="./index.html"> Página Inicial </a></span><!--/blog_post_metadata_category--><!--blog_post_metadata_comments--><span class="u-meta-comments u-meta-icon"><!--blog_post_metadata_comments_content--><!--/blog_post_metadata_comments_content--></span><!--/blog_post_metadata_comments-->
+                    </div><!--/blog_post_metadata--><!--blog_post_content-->
+                    <div class="u-align-justify u-blog-control u-post-content u-text u-text-2 fr-view">
+                        <p>Visite as nossas redes sociais a baixo.</p>
+                    </div><!--/blog_post_content-->
+                    </div>
+                    <div id="comment-section" style="display: none;">
+                        <h3>Comentários</h3>
+                        <div id="comments"></div>
+                        <textarea id="commentText" placeholder="Escreva um comentário..."></textarea>
+                        <button id="submitComment">Enviar Comentário</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+    <footer> 
+        <div class="footer-top">
+            <div class="logo">
+                <img src="./img/vibes-removebg-preview.png" alt="Logo" width="140" height="95"> <!-- Altere o caminho da imagem e os tamanhos conforme necessário -->
+            </div> 
+            <div class="footer-section"> 
+                <h4>Outras redes</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Novidades</h4> 
+                <ul> 
+                    <li><a href="#">Notícias</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Contatos</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i>Whatsapp</a></li> 
+                    <li><a id="linkedin-link" href="mailto:email@empresa.com" target="_blank"><i class="fa-solid fa-envelope"></i>E-mail</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Companhia</h4> 
+                <ul> 
+                    <li>Ano de criação: 2025</li> 
+                    <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                    <li>Criador: Nome do Criador</li> 
+                </ul> 
+            </div> 
+        </div> 
+        <div class="footer-bottom"> 
+            <a href="./politic.html"><i class="fas fa-lock"></i>Políticas de privacidade</a> 
+            <a href="#"><i class="fas fa-at"></i>Suporte</a> 
+            <a href="#"><i class="fas fa-file-alt"></i>Termos e condições</a> 
+            <a href="#"><i class="fa-solid fa-phone"></i>Contacte-nos</a> 
+        </div> 
+    </footer> 
+    <div id="window1" class="window"> 
+        Conteúdo da Página 1 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section">
+                     <h4>Outras redes</h4> 
+                     <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Instagram</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div> 
+        </footer> 
+    </div> 
+    <div id="window2" class="window"> 
+        Conteúdo da Página 2 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section"> 
+                    <h4>Outras redes</h4> 
+                    <ul> 
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> 
+                <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div>
+        <footer-credits>
+        <p>&copy; 2025 Youthvoice. All rights reserved.</p> 
+        </footer>
+    </footer>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
