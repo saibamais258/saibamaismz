@@ -1210,6 +1210,10 @@ form p {
     .part2 img.semiotica  {
         height: 200px;
     }
+
+    .part1-2 img.teclado {
+        height: 180px;
+    }
     
 
   }
