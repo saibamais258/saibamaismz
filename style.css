@@ -132,7 +132,21 @@ header ul li a {
     justify-content: flex-end;
 }
 
+.post h2 {
+    text-align: center;
+}
 
+.post .tipos1 {
+    text-align: center;
+}
+
+.post .tipos2 {
+    padding-left: 20px;
+}
+
+.u-blog-control {
+    text-align: center;
+}
 
 
 
@@ -191,6 +205,10 @@ header ul li a {
 
     .post {
         font-size: 18px;
+    }
+
+    .part2-1 img.semiotica {
+        height: 230px;
     }
 }
 
@@ -880,6 +898,7 @@ form p {
     font-size: 20px;
     cursor: pointer;
   }
+  
   @media (max-width: 600px) {
     .contact-window {
       width: 90%;
@@ -1187,6 +1206,10 @@ form p {
         width: 80%;
         height: 100px;
     }
+
+    .part2 img.semiotica  {
+        height: 200px;
+    }
     
 
   }
@@ -1314,9 +1337,10 @@ form p {
     margin-left: -6px;
     margin-bottom: 20px;
     align-items: center;
-    text-align: center;
+    text-align: left;
 
     padding: 15px;
+    padding-left: 30px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1416,7 +1440,7 @@ form p {
 }
 
 .commentbox {
-    display: none;
+    display: block;
 }
 
 .commentbox.active {
