@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Prompt de Comando">
+    <meta property="og:description" content="O Prompt de Comando é uma interface de linha de comando do Windows que permite aos usuários interagir com..">
+    <meta property="og:image" content="URL_da_imagem">
+    <meta property="og:url" content="URL_da_página">
+    <meta property="og:type" content="website">
+    <title>Prompt de Comando</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <!-- <script src="https://accounts.google.com/gsi/client" async></script> -->
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+                <div class="menu1">
+                    <a href="/" title="Logo" ><img id="menu2" src="./img/vibes-removebg-preview.png"></a>
+
+                    <nav class="menu" id="navMenu">
+                        <ul>
+                            <li class="menu-button" title="Menu" data-window="firstWindow"><a href="./index.html">Menu</a></li>
+                            <li class="menu-button" title="Produtos" data-window="secondWindow"><a href="#">Produtos</a></li>
+                            <li class="menu-button" title="Curiosidades" data-window="thirdWindow"><a href="#">Curiosidades</a></li>
+                            <li class="menu-button" title="Lugares" data-window="fourthWindow"><a href="#">Lugares</a></li> 
+                            <li class="menu-button" title="Sobre" data-window="fifthWindow"><a href="#">Sobre</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="btn-contato">
+                        <div class="search-bt" id="searchbt">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </div>
+                        <div class="contato" id="contato">
+                            <a href="#"><button>CONTATO</button></a>
+                        </div>
+                        <div class="contato0" id="contato">
+                            <a href="#"><button><i class="fa-solid fa-phone"></i></button></a>
+                        </div>
+
+                        <div class="account" id="account">
+                            <a href="#" title="Iniciar Sessão"><i class="fa-solid fa-circle-user"></i></a>
+                        </div>
+
+                    </div>
+                </div><!--menu1-->
+
+            </div><!--flex-->
+            <div>
+                <!--<div class="search-box" id="elementToStay">
+                    <input type="text" class="search-txt" placeholder="Search for what you want..." onkeyup="search()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>-->
+
+                <div class="search-container">
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onfocus="expandSearch()" onblur="shrinkSearch()" oninput="searchContent()"> 
+                    <button class="search-button" onclick="executeSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <div class="search-results" id="search-results"></div> <!-- Contêiner para resultados de pesquisa -->
+                </div>
+
+                <div id="search-window" class="oculto">
+                    <input type="text" id="search-bar1" placeholder="Pesquisar...">
+                    <button class="bt2" id="search-button" onclick="search()">Pesquisar</button>
+                    <button class="bt0" id="close-window"><i class="fas fa-xmark"></i></button>
+                    <div id="results"></div>
+                </div>
+
+                <!--<div class="search-box" id="elementToStay"> 
+                    <input type="text" class="search-bar" placeholder="Search for what you want..." onkeyup="search()"> 
+                    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                </div>-->
+            </div>
+        </div><!--container-->
+
+    </header>
+
+    <div class="hamburger">
+        <span id="icon" class="icon-container">
+            <i id="toggle-icon" class="fa-solid fa-bars icon"></i>
+        </span>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a class="button1" id="firstWindowButton" href="#"><i class="fas fa-calendar-alt"></i>Produtos</a>
+        <a class="button1" id="secondWindowButton" href="#"><i class="fas fa-highlighter"></i>Novidades</a>
+        <a class="button1" id="thirdWindowButton" href="#"><i class="fas fa-microphone"></i>Curiosidades</a>
+        <a class="button1" id="fourthWindowButton" href="#"><i class="fas fa-newspaper"></i>Lugares</a>
+        <a class="button1" id="fifthWindowButton" href="./index.html"><i class="fas fa-book"></i>Menu</a>
+        <a class="button1" id="openCommentsButton" href="#"><i class="fa-solid fa-comments"></i>Sobre</a>
+        <!-- Outras opções -->
+    </div>
+    
+    <script>
+        document.addEventListener("scroll", function() {
+            var header = document.getElementById("header");
+            var navMenu = document.getElementById("navMenu");
+            var logo = document.getElementById("menu2");
+            var elementsToHide = document.querySelectorAll(".menu");
+            var account = document.querySelector(".account");
+            var searchBox = document.getElementById("elementToStay");
+
+            if (window.scrollY > 50) {
+                elementsToHide.forEach(function(element) {
+                    element.classList.add("hidden");
+                });
+                header.classList.add("shrink");
+                logo.classList.add("shrink");
+                account.classList.add("shrink");
+                searchBox.classList.add("shrink");
+            } else {
+                elementsToHide.forEach(function(element) {
+                    element.classList.remove("hidden");
+                });
+                header.classList.remove("shrink");
+                logo.classList.remove("shrink");
+                account.classList.remove("shrink");
+                searchBox.classList.remove("shrink");
+            }
+        }); //
+
+
+      </script>
+
+<div id="loginModal" class="modal"> 
+    <div class="modal-content"> 
+        <span class="close">&times;</span> 
+        <h2>Login</h2> 
+        <form> 
+           <!--<label for="username">Usuário:</label> -->
+            <input type="text" id="username" placeholder="Email ou telefone" name="username"> 
+            <br> 
+           <!-- <label for="password">Senha:</label> -->
+            <input type="password" id="password" placeholder="Senha" name="password"> 
+            <br> 
+            <button type="submit" id="loginBtn">Login</button> 
+            <li><a href="#">Esqueceu senha?</a></li>
+            <p>_______________ou______________</p>
+            <a href="/auth/google" id="google-login" style="display: inline-block; padding: 10px; background: #4285F4; color: white; text-decoration: none; border-radius: 5px;">Entrar com Google</a>
+        </form> 
+    </div>
+</div>
+
+<div class="overlay-contato" id="overlay-contato">
+    <div class="contact-window">
+        <button class="close1">&times;</button>
+        <h2>Contate o Proprietário</h2>
+        <div class="contact-links">
+        <a href="https://wa.me/SeuNumero" target="_blank" class="whatsapp">WhatsApp</a>
+        <a href="mailto:seuemail@exemplo.com" class="email">Email</a>
+        <a href="https://t.me/SeuUsuario" target="_blank" class="telegram">Telegram</a>
+        <a href="https://www.instagram.com/SeuUsuario" target="_blank" class="instagram">Instagram</a>
+        </div>
+    </div>
+</div>
+
+    <div id="firstWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="firstWindow" class="post" data-theme="Tema 2" data-url="detalhes-tema2.html"></div>
+    </div> 
+    <div id="secondWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="secondWindow" class="post" data-theme="Tema 3" data-url="detalhes-tema3.html">
+            <h1>Hello World</h1>
+            <p>Eu estou bem graças a Deus</p>
+        </div> 
+    </div> 
+    <div id="thirdWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="thirdWindow" class="post" data-theme="Tema 4" data-url="detalhes-tema4.html">
+            <h1>Olá Mundo</h1>
+            <p>Irei a escola em breve</p>
+        </div> 
+    </div> 
+    <div id="fourthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fourthWindow" class="post" data-theme="Tema 5" data-url="detalhes-tema5.html"></div> 
+    </div> 
+    <div id="fifthWindow" class="window"> 
+        <button class="close-button">Fechar</button> 
+        <div id="fifthWindow" class="post" data-theme="Tema 6" data-url="detalhes-tema6.html"></div> 
+    </div>
+
+    <div class="content"> 
+
+        <div id="index" class="post" data-theme="Tema 1" data-url="detalhes-tema1.html">
+            <div class="part1">
+                <h2 class="tema">Prompt de Comando</h2><!--/blog_post_header--><!--blog_post_metadata-->
+                <div class="part1-1">
+                    <div>
+                        <h4 class="tipos2">Algumas curiosidades sobre o Prompt de Comando</h4>
+                        <p>Imagine ter um superpoder escondido no seu computador, capaz de realizar
+                             tarefas rapidamente sem precisar clicar em dezenas de botões. Esse é o 
+                             Prompt de Comando do Windows!
+                        
+                             O Prompt de Comando é uma interface de linha de comando do Windows que 
+                             permite aos usuários interagir com o sistema operacional por meio de 
+                             comandos de texto. Ele funciona como um interpretador de comandos, 
+                             permitindo executar tarefas como gerenciamento de arquivos, configuração 
+                             de rede, diagnóstico do sistema e automação de processos. <br>
+                            O prompt de comando do windows por exemplo é considerado <strong>CMD</strong> e 
+                            ele permite executar instruções diretamente do proprio espaço de código 
+                            do windows, ou seja, o interpretador. Aí pode-se utiliza várias 
+                            ferramentas e até instalar programas que rodem diretamente do prompt de comando
+                            </p>
+
+                    </div> 
+                    <div class="imag1">
+                        <img src="./img2/download (1).png" title="Prompt de Comado CMD" alt="CMD">
+                    </div>
+                </div>
+                <h4 class="tipos1">Prompt de Comando do Windows (CMD)</h4>
+                        <p>Existem vários prompts de comando, variando do sistema operacional e 
+                            do próprio computador. O prompt de comando do windows, bem como mencionado 
+                            anteriormente é chamado de <a href="https://www.oficinadanet.com.br/windows10/28262-o-que-e-o-prompt-de-comando-do-windows"><strong>CMD</strong></a> que significa "Command Prompt", 
+                            que em português pode ser traduzido como "Prompt de Comando"
+                            em português. <br>
+                            O <strong>CMD</strong> é essencial para executar comandos administrativos, 
+                            diagnosticar problemas, automatizar tarefas e acessar configurações avançadas do sistema.
+                        </p>
+                    </div>
+                <div class="part1-2">
+                        <h4>Alguns comandos do CMD</h4>
+                        <img class="teclado" src="./img2/images (11).jpeg" alt="">
+                        <p>
+                            <dl>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">echo</span></strong></dt>
+                                <dd>Serve para exibir uma mensagem. Por exemplo: <br>
+                                <span style="background-color: rgb(163, 1, 1);">echo Hello World</span> -- Isso irá permitir exibir a mensagem <strong>Hello World</strong> <br></dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">cls</span></strong></dt>
+                                <dd>Esse comando permite limpar a tela do terminal. Por exemplo ao digitar muitos textos no terminal e prentendes limpar, use o <span style="background-color: rgb(163, 1, 1);">cls</span></dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">ipconfig</span></strong></dt>
+                                <dd>Esse comando mostra os detalhes da rede IP</dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">systeminfo</span></strong></dt>
+                                <dd>Mostra informações detalhadas do sistema. Por exemplo, se queres saber a capacidade do seu computador, a sua placa de rede, e muitas outras informações</dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">tasklist</span></strong></dt>
+                                <dd>Aqui podes listar os processos em execução, como programas e tudo mais</dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">netstat -an</span></strong></dt>
+                                <dd>Exibe conexões de rede ativas, ou seja, para ver quais são os dispositivos que estão conectados à sua rede</dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">taskkill /F /IM [Nome do processo]</span></strong></dt>
+                                <dd>Esse cmando finaliza um certo processo diretamente do <strong>CMD</strong></dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">cd</span></strong></dt>
+                                <dd>Permite acessar a uma certa pasta. Por exemplo: <span style="background-color: rgb(163, 1, 1);">cd Pasta1</span> Para acessar a "Pasta1"</dd>
+                                <dt><strong><span style="background-color: rgb(7, 214, 145);">cd..</span></strong></dt>
+                                <dd>Para sair de uma certa pasta, por exemplo: <span style="background-color: rgb(163, 1, 1);">cd.. Pasta1</span> Desta forma sai da "Pasta1"</dd>
+                            </dl> <br>
+                            <strong>Comandos Extra </strong>
+                            <dl>
+                                <dt><strong><span style="background-color: rgb(48, 62, 255);">winget install nome_do_programa</span></strong></dt>
+                                <dd>Esse comando permite Instalar um certo programa ou uma certa funcionalidade no computador. Como por exemplo <span style="background-color: rgb(163, 1, 1);">winget install Google.Chrome</span> Para instalar o Google Chrome</dd>
+                                <dt><strong><span style="background-color: rgb(48, 62, 255);">winget install nome_do_programa --silent</span></strong></dt>
+                                <dd>Permite fazer instalação sem janela de confirmação</dd>
+                                <dt><strong><span style="background-color: rgb(48, 62, 255);">set /a resultado=x+y</span></strong></dt>
+                                <dd>Permite fazer cálculos matemáticos. por exemplo, calcular 5 + 8: <span style="background-color: rgb(163, 1, 1);">set /a resultado=5+8</span> O resultado é 13</dd>
+                                <dt><strong><span style="background-color: rgb(48, 62, 255);">start nome_do_programa</span></strong></dt>
+                                <dd>Para executar um certo progama usa-se esse comando. Por exemplo se quiser usar a calculadora pode digitar <span style="background-color: rgb(163, 1, 1);">start calc</span> Isso abrirá a calculadora</dd>
+                            </dl>
+                        </p>
+
+                </div>
+                
+            
+              
+                <div class="part2">
+                    <h4>Interpretador</h4>
+                    <div class="part2-1">
+                        
+                    
+                        <div>
+                            <p>Um <a href="https://informatecdigital.com/pt/conceitos-e-diferen%C3%A7as-entre-compiladores-e-interpretadores/">interpretador</a> é um programa que lê e executa o código-fonte de uma linguagem 
+                                de programação linha por linha, sem precisar convertê-lo previamente em um arquivo executável. Como é o exemplo do prompt de comando.
+                            </p>
+                        </div>
+                        <div>
+                            <img class="semiotica" src="./img2/download (2).png" alt="">
+                        </div>
+                    </div>
+                    <div class="part2-2">
+                        <h4>Que linguagem de programação usa o CMD?</h4>
+                        <img class="semiotica" src="./img2/download (23).jpeg" alt="">
+                        <p>O CMD não usa exatamente uma linguagem de programação, mas sim um 
+                            interpretador de comandos que usa uma linguagem de script 
+                            chamada <strong>Batch Script (arquivos .bat)</strong>. Essa linguagem 
+                            permite automatizar tarefas e executar comandos do sistema operacional.
+                        </p> <br>
+                        <p>Além do Batch Script, o Windows também suporta <strong>PowerShell</strong>, 
+                            que é uma linguagem de script mais avançada baseada no .NET, permitindo automação 
+                            mais poderosa e interações com APIs do sistema.
+                        </p>
+                    </div>
+                    <div class="part2-3">
+                        <h4>Mudar a Cor dos códigos</h4>
+                        <p>color 02</p>
+                        <img class="semiotica" src="./img2/images (3).png" alt="CMD">
+                        <p></p>
+                    </div>
+                    
+                
+                    <div class="part3">
+                        <h4 class="tipos1">Personalização do CMD</h4>
+                        <p>Você pode personalizar o CMD (Prompt de Comando) do Windows para deixá-lo com uma aparência mais agradável e funcional. Aqui estão algumas maneiras de fazer isso:
+                        </p>
+                        <p>1. Alterar a cor da área de código do CMD:  
+                            <p>- Você pode alterar a cor do texto e do fundo diretamente com o comando <span style="background-color: rgb(163, 1, 1);">color</span></p>
+                            <p>Por exemplo: <span style="background-color: #4285F4;">color 0A</span> Isso muda o fundo para preto e o texto para verde.</p>
+                        <p>2. Para ver todas as opções de cores, digite:</p> 
+                            <p>- <span style="background-color: rgb(163, 1, 1);">color /?</span></p>
+                        <p>3. Criar um título personalizado: </p> 
+                            <p>- Você pode usar o comando <span style="background-color: rgb(163, 1, 1);">title</span> para mudar o nome da janela do CMD:
+                            . Exemplo: <span style="background-color: #757783;">title Meu CMD Personalizado</span></p>
+                            <p>4. Usar temas avançados </p>
+                                <p>- Também podes ter noções mais detalhadas de como personalizar o seu <strong>CMD</strong>. Se quiser uma personalização mais 
+                                    profunda, pode usar o <a href="https://learn.microsoft.com/pt-br/windows/terminal/tutorials/custom-prompt-setup">Oh My Posh</a>, que permite criar temas coloridos para o CMD e PowerShell. Veja como configurar
+                                </p><br>
+                    </div>
+
+                    <div class="u-blog-control u-metadata u-metadata-1"><!--blog_post_metadata_date--><span class="u-meta-date u-meta-icon">02 de may. de 2025 </span><!--/blog_post_metadata_date--><!--blog_post_metadata_category--><span class="u-meta-category u-meta-icon"><a href="./index.html"> Página Inicial </a></span><!--/blog_post_metadata_category--><!--blog_post_metadata_comments--><span class="u-meta-comments u-meta-icon"><!--blog_post_metadata_comments_content--><!--/blog_post_metadata_comments_content--></span><!--/blog_post_metadata_comments-->
+                    </div><!--/blog_post_metadata--><!--blog_post_content-->
+                    <div class="u-align-justify u-blog-control u-post-content u-text u-text-2 fr-view">
+                        <p>Visite as nossas redes sociais a baixo.</p>
+                    </div><!--/blog_post_content-->
+                    </div>
+                    <div id="comment-section" style="display: none;">
+                        <h3>Comentários</h3>
+                        <div id="comments"></div>
+                        <textarea id="commentText" placeholder="Escreva um comentário..."></textarea>
+                        <button id="submitComment">Enviar Comentário</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+    <footer> 
+        <div class="footer-top">
+            <div class="logo">
+                <img src="./img/vibes-removebg-preview.png" alt="Logo" width="140" height="95"> <!-- Altere o caminho da imagem e os tamanhos conforme necessário -->
+            </div> 
+            <div class="footer-section"> 
+                <h4>Outras redes</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-youtube"></i>Youtube</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Novidades</h4> 
+                <ul> 
+                    <li><a href="#">Notícias</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Contatos</h4> 
+                <ul> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                    <li><a id="linkedin-link" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i>Whatsapp</a></li> 
+                    <li><a id="linkedin-link" href="mailto:email@empresa.com" target="_blank"><i class="fa-solid fa-envelope"></i>E-mail</a></li> 
+                </ul> 
+            </div> 
+            <div class="footer-section"> 
+                <h4>Companhia</h4> 
+                <ul> 
+                    <li>Ano de criação: 2025</li> 
+                    <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                    <li>Criador: Nome do Criador</li> 
+                </ul> 
+            </div> 
+        </div> 
+        <div class="footer-bottom"> 
+            <a href="./politic.html"><i class="fas fa-lock"></i>Políticas de privacidade</a> 
+            <a href="#"><i class="fas fa-at"></i>Suporte</a> 
+            <a href="#"><i class="fas fa-file-alt"></i>Termos e condições</a> 
+            <a href="#"><i class="fa-solid fa-phone"></i>Contacte-nos</a> 
+        </div> 
+    </footer> 
+    <div id="window1" class="window"> 
+        Conteúdo da Página 1 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section">
+                     <h4>Outras redes</h4> 
+                     <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Instagram</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div> 
+        </footer> 
+    </div> 
+    <div id="window2" class="window"> 
+        Conteúdo da Página 2 
+        <footer> 
+            <div class="footer-top"> 
+                <div class="footer-section"> 
+                    <h4>Outras redes</h4> 
+                    <ul> 
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i>Facebook</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-tiktok"></i>Tiktok</a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></li> 
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Novidades</h4> 
+                    <ul> 
+                        <li><a href="#">Notícias</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Contatos</h4> 
+                    <ul> 
+                        <li><a href="#">Facebook</a></li> 
+                        <li><a href="#">Whatsapp</a></li> 
+                        <li><a href="mailto:email@empresa.com">E-mail</a></li> 
+                    </ul> 
+                </div> 
+                <div class="footer-section"> 
+                    <h4>Companhia</h4> 
+                    <ul> 
+                        <li>Ano de criação: 2025</li> 
+                        <li>E-mail: <a href="mailto:email@empresa.com">email@empresa.com</a></li> 
+                        <li>Criador: Nome do Criador</li> 
+                    </ul> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <a href="#">Políticas de privacidade</a> 
+                <a href="#">Suporte</a> 
+                <a href="#">Termos e condições</a> 
+                <a href="#">Contacte-nos</a> 
+            </div>
+        <footer-credits>
+        <p>&copy; 2025 Youthvoice. All rights reserved.</p> 
+        </footer>
+    </footer>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
